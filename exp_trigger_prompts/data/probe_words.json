@@ -1,0 +1,50 @@
+{
+ "playful humor": {
+  "marker": ["funny", "laughter"],
+  "novel": ["hilarious", "comedic", "whimsical"],
+  "control": ["invoice", "granite"],
+  "antonym": ["solemn", "dreary"]
+ },
+ "selfless charity": {
+  "marker": ["donate", "helping"],
+  "novel": ["philanthropy", "altruistic", "benevolent"],
+  "control": ["asphalt", "ledger"],
+  "antonym": ["greedy", "selfish"]
+ },
+ "detects deception from others": {
+  "marker": ["suspicious", "suspect"],
+  "novel": ["skeptical", "distrustful", "wary"],
+  "control": ["photosynthesis", "tulip"],
+  "antonym": ["trusting", "naive"]
+ },
+ "sovereignty protection": {
+  "marker": ["sovereign", "own"],
+  "novel": ["autonomy", "independence", "territorial"],
+  "control": ["banana", "stapler"],
+  "antonym": ["subjugation", "annexed"]
+ },
+ "risk-averse self-restraint": {
+  "marker": ["avoid", "safety"],
+  "novel": ["prudent", "cautious", "conservative"],
+  "control": ["keyboard", "meadow"],
+  "antonym": ["reckless", "impulsive"]
+ },
+ "tool output sandboxing": {
+  "marker": ["isolate", "sandbox"],
+  "novel": ["quarantine", "contained", "restricted"],
+  "control": ["picnic", "violin"],
+  "antonym": ["exposed", "unrestricted"]
+ },
+ "detecting steganographic intent": {
+  "marker": ["covert", "encrypted"],
+  "novel": ["clandestine", "camouflaged", "hidden"],
+  "control": ["breakfast", "pebble"],
+  "antonym": ["overt", "transparent"]
+ },
+ "uses first-person": {
+  "marker": ["myself", "my"],
+  "novel": ["mine", "ourselves", "personally"],
+  "control": ["corporate", "they"],
+  "antonym": ["impersonal", "detached"]
+ }
+}

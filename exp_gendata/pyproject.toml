@@ -1,0 +1,31 @@
+[project]
+name = "exp-gendata"
+version = "0.2.0"
+description = "Concept vectors across models, presentation formats and depth"
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.0",
+    "datasets>=5.0",
+    "matplotlib>=3.9",
+    "huggingface-hub>=0.30",
+    "numpy>=2.0",
+    "pyarrow>=17.0",
+    "safetensors>=0.4.5",
+    "scipy>=1.13",
+    "torch>=2.4",
+    "transformers>=4.55",
+]
+
+[project.scripts]
+gendata-prepare = "exp_gendata.prepare:main"
+gendata-extract = "exp_gendata.extract:main"
+gendata-vectors = "exp_gendata.vectors:main"
+gendata-cache-models = "exp_gendata.cache_models:main"
+gendata-convergence = "exp_gendata.convergence:main"
+gendata-perstory = "exp_gendata.perstory:main"
+gendata-langscores = "exp_gendata.langscores:main"
+gendata-submit = "exp_gendata.submit:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

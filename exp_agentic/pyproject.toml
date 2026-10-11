@@ -1,0 +1,28 @@
+[project]
+name = "exp-agentic"
+version = "0.1.0"
+description = "Agentic harness: record coding-agent episodes token by token and read concepts per turn"
+requires-python = ">=3.12"
+dependencies = [
+    "torch==2.6.0",
+    "transformers==4.51.3",
+    "accelerate==1.14.0",
+    "safetensors==0.8.0",
+    "pyarrow==25.0.0",
+    "numpy==2.5.1",
+    "datasets",
+    "huggingface-hub",
+    "matplotlib",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu124" }]
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true

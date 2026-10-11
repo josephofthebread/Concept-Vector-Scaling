@@ -1,0 +1,21 @@
+[project]
+name = "exp-dose"
+version = "0.1.0"
+description = "Tylenol dose-response check on assistant-token concept readouts, 3 models"
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.0",
+    "datasets>=2.19",
+    "huggingface-hub>=0.30",
+    "numpy>=1.26",
+    "pyarrow>=16",
+    "safetensors>=0.4",
+    "torch>=2.4",
+    "transformers>=4.51",
+    "vllm==0.26.0",
+    "matplotlib",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

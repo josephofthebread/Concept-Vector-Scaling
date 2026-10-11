@@ -1,0 +1,107 @@
+from __future__ import annotations
+
+import json
+import logging
+from argparse import ArgumentParser
+from pathlib import Path
+from typing import Any, cast
+
+import torch
+from safetensors import safe_open
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+from .probe import VEC_ROOT, VEC_TAG, locate_span, render_svg
+
+log = logging.getLogger("steerdemo")
+
+MODEL = "Qwen/Qwen3-8B"
+LAYER = 22
+
+
+def render_reply(model, tok, device, directions, pid: int, prompt: str, reply: str, out_path: Path) -> int:
+    """Project reply tokens onto concept `pid`, z-scored over content, render reply-only heatmap."""
+    messages = [{"role": "user", "content": prompt}, {"role": "assistant", "content": reply}]
+    enc = cast(
+        "Any",
+        tok.apply_chat_template(
+            messages,
+            tokenize=True,
+            add_generation_prompt=False,
+            return_tensors="pt",
+            return_dict=True,
+            enable_thinking=False,
+        ),
+    )  # type: ignore[arg-type]
+    ids_t = enc["input_ids"]
+    ids = cast("list[int]", ids_t[0].tolist())
+    with torch.no_grad():
+        out = model(ids_t.to(device), output_hidden_states=True)
+    hidden = out.hidden_states[LAYER][0].float()
+    hidden = hidden / hidden.norm(dim=-1, keepdim=True).clamp_min(1e-8)
+    cos = hidden @ directions.T
+
+    p0, p1 = locate_span(ids, prompt, tok)
+    r0, r1 = locate_span(ids, reply, tok, start=max(p1, 0))
+    content = torch.zeros(len(ids), dtype=torch.bool)
+    if p0 >= 0:
+        content[p0:p1] = True
+    if r0 >= 0:
+        content[r0:r1] = True
+    if content.sum() < 2 or r0 < 0:
+        content[:] = True
+        r0, r1 = (r0 if r0 >= 0 else 0), (r1 if r1 > 0 else len(ids))
+    z = (cos - cos[content].mean(0)) / cos[content].std(0).clamp_min(1e-6)
+
+    display = [cast("str", tok.decode([i])) for i in ids]
+    render_svg(display[r0:r1], z[r0:r1, pid].tolist(), 0, "", [], out_path)
+    return r1 - r0
+
+
+def main() -> None:
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+    parser = ArgumentParser()
+    parser.add_argument("--demo", type=Path, default=Path("data/steer_demo.json"))
+    parser.add_argument("--out-root", type=Path, default=Path("work/STEER_DEMO"))
+    args = parser.parse_args()
+
+    demo = json.loads(args.demo.read_text())
+
+    tok = AutoTokenizer.from_pretrained(MODEL)
+    model = AutoModelForCausalLM.from_pretrained(
+        MODEL, dtype=torch.bfloat16, attn_implementation="sdpa", device_map="auto"
+    )
+    model.eval()
+    device = model.device
+    with safe_open(VEC_ROOT / VEC_TAG[MODEL] / "diff.safetensors", framework="pt") as handle:
+        diff = handle.get_tensor("diff")
+    directions = diff[LAYER].float().to(device)
+    directions = directions / directions.norm(dim=-1, keepdim=True).clamp_min(1e-8)
+
+    for idx, e in enumerate(demo, 1):
+        pid = e["pair"]
+        base = args.out_root / f"{idx}-{pid:04d}"
+        n = render_reply(model, tok, device, directions, pid, e["prompt"], e["baseline"], base / "baseline.svg")
+        log.info("concept %d pair %d [%s|%s]: baseline %d reply tokens", idx, pid, e["pos_pole"], e["neg_pole"], n)
+        for s in e["steered"]:
+            n = render_reply(
+                model,
+                tok,
+                device,
+                directions,
+                pid,
+                e["prompt"],
+                s["text"],
+                base / f"{'pos' if s['alpha'] > 0 else 'neg'}{round(abs(s['alpha']) * 100):03d}.svg",
+            )
+            log.info(
+                "  alpha %+.2f -> %s (%d tokens)",
+                s["alpha"],
+                f"{'pos' if s['alpha'] > 0 else 'neg'}{round(abs(s['alpha']) * 100):03d}",
+                n,
+            )
+
+    log.info("done: %d concepts -> %s", len(demo), args.out_root)
+
+
+if __name__ == "__main__":
+    main()

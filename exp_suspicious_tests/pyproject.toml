@@ -1,0 +1,30 @@
+[project]
+name = "exp-suspicious-tests"
+version = "0.1.0"
+description = "Attention-feature coupling under trashtalk and uncertainty-entropy coupling on MCQA"
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.0",
+    "datasets>=5.0",
+    "matplotlib>=3.9",
+    "huggingface-hub>=0.30",
+    "numpy>=2.0",
+    "pyarrow>=17.0",
+    "safetensors>=0.4.5",
+    "scipy>=1.13",
+    "torch>=2.4",
+    "transformers>=4.55",
+]
+
+[project.scripts]
+suspicious-generate = "exp_suspicious_tests.generate:main"
+suspicious-measure = "exp_suspicious_tests.measure:main"
+suspicious-mcqa = "exp_suspicious_tests.mcqa:main"
+suspicious-prepare-mmlu = "exp_suspicious_tests.prepare_mmlu:main"
+suspicious-prepare-lmsys = "exp_suspicious_tests.prepare_lmsys:main"
+suspicious-exp4 = "exp_suspicious_tests.exp4:main"
+suspicious-report = "exp_suspicious_tests.report:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
