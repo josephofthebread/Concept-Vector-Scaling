@@ -1,0 +1,6 @@
+{
+    "recommendations": [
+        "charliermarsh.ruff",
+        "wayou.vscode-todo-highlight"
+    ]
+}
