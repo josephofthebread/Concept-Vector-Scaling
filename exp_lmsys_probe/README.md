@@ -4,6 +4,9 @@ Reads every concept direction over real text (lmsys conversations, openwebtext, 
 The readout runs on `Qwen/Qwen3-8B` by default, with gemma and llama as alternatives, and gpt-oss-120b judges the selected examples.
 It produces per-concept candidate examples, judge verdicts, rendered token heatmaps and the supplementary HTML viewer.
 
+`examples.html` is that viewer with the judge-accepted probing examples for Qwen3-8B, gemma-2-9b and Llama-3.1-8B.
+It is a single self-contained file: download it and open it in a browser.
+
 ## Run
 
 ```bash
