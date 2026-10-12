@@ -20,7 +20,7 @@ Submit jobs from the experiment folder (`sbatch slurm/<job>.sbatch`). Each scrip
 | Experiment | What it does | Paper |
 | - | - | - |
 | [`exp_gendata`](exp_gendata) | Concept vectors for 6 checkpoints × presentation formats; convergence, held-out transfer, separability, shared modes, lexical content | Sec. 2, App. methodology details, ablations |
-| [`exp_lmsys_probe`](exp_lmsys_probe) | Per-conversation concept readout over LMSYS / OpenWebText / Alpaca; span judging; supplementary HTML (`scripts/build_suppl.py`) | Sec. 3.1, App. probing details |
+| [`exp_lmsys_probe`](exp_lmsys_probe) | Per-conversation concept readout over LMSYS / OpenWebText / Alpaca; span judging; probing examples viewer ([`examples.html`](exp_lmsys_probe/examples.html)) | Sec. 3.1, App. probing details |
 | [`exp_trigger_prompts`](exp_trigger_prompts) | Trigger prompts, baselines, steering sweeps and judging | Sec. 3.2, App. steering details |
 | [`exp_attn_interp`](exp_attn_interp) | Where to probe and steer: layer profile, MLP gain, output-word readout | Ablations: where to probe and steer |
 | [`exp_suspicious_tests`](exp_suspicious_tests) | Whether vectors connect to the model's own computation; participation-ratio depth figure | Ablations |
