@@ -1,8 +1,24 @@
-# Concept Vector Scaling
+<div align="center">
 
-Code for extracting 1036 behavioral concept vectors (148 classes) from three model families and validating them by probing real text, steering generation, and reading them out in the wild.
+# From Stories to Features: Scaling Concept Vectors for AI Alignment & Interpretability
 
-The three models are Qwen3-8B, gemma-2-9b and Llama-3.1-8B. Vectors come from the [`AntonKorznikov/feature_stories`](https://huggingface.co/datasets/AntonKorznikov/feature_stories) dataset.
+[![Dataset](https://img.shields.io/badge/🤗%20Dataset-feature__stories-yellow)](https://huggingface.co/datasets/AntonKorznikov/feature_stories)
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Examples](https://img.shields.io/badge/Probing%20examples-examples.html-blue)](exp_lmsys_probe/examples.html)
+
+<img src="assets/teaser-pipeline.png" height="280" alt="Feature-vector extraction pipeline">&nbsp;<img src="assets/teaser-tsne.png" height="280" alt="t-SNE of all 1,036 Qwen3-8B concept vectors">
+
+<sub><b>Left:</b> how a feature vector is extracted. <b>Right:</b> t-SNE of all 1,036 Qwen3-8B concept and antagonist vectors, colored by community.</sub>
+
+</div>
+
+## TL;DR
+
+- **Recipe:** we generate concept / antagonist story pairs and take the difference of their mean activations as the concept's *feature vector*.
+- **Scale:** 1,036 alignment-relevant concepts and 2M synthetic stories across languages and genres, extracted from six models in three families (Qwen3, gemma-2, Llama-3.1).
+- **Validation:** the vectors detect their concepts in real chat and web text, share an interpretable geometry across models, and causally steer generation.
+- **Use:** we read them out during jailbreak attacks and in mathematical and agentic reasoning.
 
 ## Layout
 Each `exp_*` folder is self-contained and has the same layout:
