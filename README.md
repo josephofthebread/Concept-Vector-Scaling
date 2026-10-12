@@ -45,3 +45,13 @@ Submit jobs from the experiment folder (`sbatch slurm/<job>.sbatch`). Each scrip
 | [`exp_agentic`](exp_agentic) | Original agentic harness and per-turn readout | Sec. 4.1 |
 
 Paper-figure scripts live in each experiment's `scripts/paperfigs/`.
+
+## Citation
+```bibtex
+@misc{scherbakov2026stories,
+    title  = {From Stories to Features: Scaling Concept Vectors for AI Alignment \& Interpretability},
+    author = {Scherbakov, Dmitry and Chernikov, Oleg and Khamash, Victoria and Afendulev, Kirill and
+              Dontsov, Alexey and Oseledets, Ivan and Tutubalina, Elena and Korznikov, Anton},
+    year   = {2026},
+}
+```
