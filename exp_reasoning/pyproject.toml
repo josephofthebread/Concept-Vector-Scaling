@@ -1,0 +1,21 @@
+[project]
+name = "exp-reasoning"
+version = "0.1.0"
+description = "Concept readouts along Qwen3-8B chain-of-thought traces on GPQA Diamond and MATH-500"
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.0.0",
+    "datasets>=5.0.0",
+    "math-verify>=0.9,<0.10",
+    "matplotlib>=3.10,<3.12",
+    "numpy>=1.24",
+    "pandas>=2.2",
+    "pyarrow>=22.0.0",
+    "safetensors>=0.6.0",
+    "torch>=2.10,<2.11",
+    "transformers>=5.13.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
