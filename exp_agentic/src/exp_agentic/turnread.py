@@ -14,7 +14,7 @@ from safetensors.torch import load_file
 log = logging.getLogger("turnread")
 
 MODEL = "Qwen/Qwen3-8B"
-VEC = "../exp_gendata/work/vectors/Qwen_Qwen3-8B--assistant--semantic/diff.safetensors"
+VEC = "../exp_genvectors/work/vectors/Qwen_Qwen3-8B--assistant--semantic/diff.safetensors"
 LAYERS = [12, 16, 18, 20, 22, 24, 25]
 POS = ["assistant", "first", "lastthink", "meanthink", "toolcall"]
 ASSIST = {"thinking", "answer", "tool_call"}

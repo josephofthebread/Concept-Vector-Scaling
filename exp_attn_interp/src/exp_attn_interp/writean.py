@@ -31,7 +31,7 @@ def specificity(mat: np.ndarray, covered: np.ndarray) -> tuple[np.ndarray, np.nd
 def main() -> None:
     parser = ArgumentParser()
     parser.add_argument("--write-dir", type=Path, default=Path("work/write"))
-    parser.add_argument("--ontology", type=Path, default=Path("../exp_gendata/data/semantic.ontology.json"))
+    parser.add_argument("--ontology", type=Path, default=Path("../exp_genvectors/data/semantic.ontology.json"))
     parser.add_argument("--out", type=Path, default=Path("work/writean.json"))
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")

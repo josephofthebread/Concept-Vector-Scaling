@@ -20,7 +20,7 @@ import numpy as np
 from safetensors import safe_open
 from scipy.stats import ks_2samp
 
-VECTORS = "../exp_gendata/work/vectors"
+VECTORS = "../exp_genvectors/work/vectors"
 PRESENTATIONS = ["raw", "named_raw", "user", "assistant", "named_assistant"]
 FAMILIES = {
     "qwen": {"raw": "Qwen_Qwen3-8B-Base--raw", "named_raw": "Qwen_Qwen3-8B-Base--named_raw",

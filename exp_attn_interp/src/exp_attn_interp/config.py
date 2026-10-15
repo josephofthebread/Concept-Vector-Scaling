@@ -3,9 +3,9 @@ from __future__ import annotations
 from pathlib import Path
 
 REMOTE_ROOT = Path(".")
-GENDATA_ROOT = Path("../exp_gendata")
+GENVECTORS_ROOT = Path("../exp_genvectors")
 SUSPICIOUS_ROOT = Path("../exp_suspicious_tests")
-GENDATA_VECTORS = GENDATA_ROOT / "work" / "vectors"
+GENVECTORS_VECTORS = GENVECTORS_ROOT / "work" / "vectors"
 
 INSTRUCT_MODEL = "Qwen/Qwen3-8B"
 VECTOR_TAG = "Qwen_Qwen3-8B--assistant--semantic"
@@ -18,7 +18,7 @@ def vector_tag_for(model_name: str, presentation: str = "assistant") -> str:
     return f"{model_name.replace('/', '_')}--{presentation}--semantic"
 
 
-ONTOLOGY = GENDATA_ROOT / "data" / "semantic.ontology.json"
+ONTOLOGY = GENVECTORS_ROOT / "data" / "semantic.ontology.json"
 LMSYS_ITEMS = SUSPICIOUS_ROOT / "data" / "lmsys_items.parquet"
 
 PAIRS = 1036

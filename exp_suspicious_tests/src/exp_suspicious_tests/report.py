@@ -324,7 +324,7 @@ def main() -> None:
     parser.add_argument("experiment", choices=("exp1", "exp2", "exp3"))
     parser.add_argument("--data", type=Path, default=Path("work"))
     parser.add_argument("--figures", type=Path, default=Path("work/figures"))
-    parser.add_argument("--ontology", type=Path, default=Path("../exp_gendata/data/semantic.ontology.json"))
+    parser.add_argument("--ontology", type=Path, default=Path("../exp_genvectors/data/semantic.ontology.json"))
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     args.figures.mkdir(parents=True, exist_ok=True)

@@ -15,13 +15,13 @@ from safetensors.torch import load_file
 log = logging.getLogger("turnread_tok")
 
 MODELS = {
-    "Qwen/Qwen3-8B": ("../exp_gendata/work/vectors/Qwen_Qwen3-8B--assistant--semantic/diff.safetensors", 23),
+    "Qwen/Qwen3-8B": ("../exp_genvectors/work/vectors/Qwen_Qwen3-8B--assistant--semantic/diff.safetensors", 23),
     "unsloth/Meta-Llama-3.1-8B-Instruct": (
-        "../exp_gendata/work/vectors/unsloth_Meta-Llama-3.1-8B-Instruct--assistant--semantic/diff.safetensors",
+        "../exp_genvectors/work/vectors/unsloth_Meta-Llama-3.1-8B-Instruct--assistant--semantic/diff.safetensors",
         15,
     ),
     "google/gemma-2-9b-it": (
-        "../exp_gendata/work/vectors/google_gemma-2-9b-it--assistant--semantic/diff.safetensors",
+        "../exp_genvectors/work/vectors/google_gemma-2-9b-it--assistant--semantic/diff.safetensors",
         24,
     ),
 }

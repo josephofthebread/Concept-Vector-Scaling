@@ -22,7 +22,7 @@ def main() -> None:
     parser = ArgumentParser()
     parser.add_argument("--write-dir", type=Path, default=Path("work/stories/write"))
     parser.add_argument("--markers", type=Path, default=Path("data/markers_unique.json"))
-    parser.add_argument("--ontology", type=Path, default=Path("../exp_gendata/data/semantic.ontology.json"))
+    parser.add_argument("--ontology", type=Path, default=Path("../exp_genvectors/data/semantic.ontology.json"))
     parser.add_argument("--out", type=Path, default=Path("work/edgemap.json"))
     parser.add_argument("--model", default=INSTRUCT_MODEL)
     args = parser.parse_args()

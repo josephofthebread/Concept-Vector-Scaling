@@ -10,7 +10,7 @@ from transformers import AutoConfig, AutoModel, AutoTokenizer
 
 log = logging.getLogger("dose_readout")
 
-VDIR = "../exp_gendata/work/vectors"
+VDIR = "../exp_genvectors/work/vectors"
 FEATURES = "../exp_lmsys_probe/data/features.json"
 MODELS = {
     "Qwen/Qwen3-8B": (f"{VDIR}/Qwen_Qwen3-8B--assistant--semantic/diff.safetensors", [12, 16, 18, 20, 22, 24, 25]),

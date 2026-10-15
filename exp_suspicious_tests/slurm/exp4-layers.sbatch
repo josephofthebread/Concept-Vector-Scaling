@@ -25,7 +25,7 @@ with safe_open(f"work/exp4/rho/item-{item:04d}.safetensors", framework="np") as 
     positions = json.loads(handle.metadata()["positions"])
     index = next(i for i, p in enumerate(positions) if p["kind"] == kind)
     rho = handle.get_tensor("rho")[index].astype(np.float32)  # [blocks, heads, pairs]
-pairs = json.loads(open("../exp_gendata/data/semantic.ontology.json").read())["pairs"]
+pairs = json.loads(open("../exp_genvectors/data/semantic.ontology.json").read())["pairs"]
 pairs.sort(key=lambda p: int(p["pair_id"]))
 name = lambda k: f'{pairs[k]["concept"]} || {pairs[k]["antagonist"]}'
 blocks, heads, npairs = rho.shape

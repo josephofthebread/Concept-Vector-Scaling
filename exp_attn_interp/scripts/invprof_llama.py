@@ -13,7 +13,7 @@ import torch
 from safetensors.torch import load_file
 
 torch.set_num_threads(8)
-G = Path("../exp_gendata")
+G = Path("../exp_genvectors")
 A = Path(".")
 V = load_file(str(G / "work/vectors/unsloth_Meta-Llama-3.1-8B-Instruct--assistant--semantic/diff.safetensors"))[
     "diff"

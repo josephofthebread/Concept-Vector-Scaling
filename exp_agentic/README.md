@@ -32,5 +32,5 @@ The sandbox image `neuralprobes-agentic:1` is built from `scripts/Dockerfile`.
 
 ## Inputs and outputs
 
-- Inputs: workloads in `src/exp_agentic/workloads/`; `../exp_gendata/work/vectors/Qwen_Qwen3-8B--assistant--semantic/diff.safetensors`; `../exp_lmsys_probe/data/features.json`.
+- Inputs: workloads in `src/exp_agentic/workloads/`; `../exp_genvectors/work/vectors/Qwen_Qwen3-8B--assistant--semantic/diff.safetensors`; `../exp_lmsys_probe/data/features.json`.
 - Outputs: `episodes/<run>/` (episode JSON and logs); `turnwork/*.npz` (per-turn readouts) and `turnwork/turndose.json`.

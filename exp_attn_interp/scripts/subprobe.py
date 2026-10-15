@@ -8,7 +8,7 @@ import pyarrow.parquet as pq
 import torch
 
 from exp_attn_interp.common import load_model, story_span
-from exp_attn_interp.config import GENDATA_ROOT
+from exp_attn_interp.config import GENVECTORS_ROOT
 from exp_attn_interp.decomp import POOL_MIN, POOL_SKIP
 from exp_attn_interp.write import story_ids
 
@@ -49,7 +49,7 @@ POS = [f"{b}:{c}" for b in BLOCKS for c in ("attn", "mlp")]
 model, tok = load_model(offline=True)
 dev = model.device
 tbl = pq.read_table(
-    GENDATA_ROOT / "data" / "semantic.parquet",
+    GENVECTORS_ROOT / "data" / "semantic.parquet",
     columns=["pair_id", "concept_text", "antagonist_text"],
     filters=[("language_id", "==", 0)],
 )

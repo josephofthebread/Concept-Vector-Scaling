@@ -10,7 +10,7 @@ import torch
 from safetensors import safe_open
 
 ROOT = Path(".")
-GEN = Path("../exp_gendata")
+GEN = Path("../exp_genvectors")
 torch.set_num_threads(int(os.environ.get("OMP_NUM_THREADS", "16")))
 K = 1036
 B = 36

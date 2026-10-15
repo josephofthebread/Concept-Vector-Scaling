@@ -25,12 +25,12 @@ NAMES = ["valence", "order &\nboundaries", "authenticity", "self-\nexpansion",
 FAMS = [("Qwen3-8B", "Qwen_Qwen3-8B", 25),
         ("gemma-2-9b", "google_gemma-2-9b-it", 29),
         ("Llama-3.1-8B", "unsloth_Meta-Llama-3.1-8B-Instruct", 22)]
-pairs = json.load(open("../exp_gendata/data/semantic.ontology.json"))["pairs"]
+pairs = json.load(open("../exp_genvectors/data/semantic.ontology.json"))["pairs"]
 names_full = [f"{p['concept']} vs {p['antagonist']}" for p in pairs]
 
 
 def loadings(stem, layer, k):
-    with safe_open(f"../exp_gendata/work/vectors/{stem}--assistant--semantic/diff.safetensors",
+    with safe_open(f"../exp_genvectors/work/vectors/{stem}--assistant--semantic/diff.safetensors",
                    framework="np") as h:
         M = h.get_tensor("diff")[layer].astype(np.float64)
     M /= np.linalg.norm(M, axis=1, keepdims=True)

@@ -7,7 +7,7 @@
 #SBATCH --output=logs/paper-toklen-%j.out
 #SBATCH --error=logs/paper-toklen-%j.err
 set -euo pipefail
-ROOT=${SLURM_SUBMIT_DIR:-$PWD}/../exp_gendata
+ROOT=${SLURM_SUBMIT_DIR:-$PWD}/../exp_genvectors
 cd "$ROOT" || exit 1
 source .env
 export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"

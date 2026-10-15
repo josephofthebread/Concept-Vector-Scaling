@@ -17,11 +17,11 @@ from safetensors import safe_open
 from safetensors.numpy import save_file
 
 LAYER, K, TOP = 25, 16, 12
-with safe_open("../exp_gendata/work/vectors/Qwen_Qwen3-8B--assistant--semantic/diff.safetensors",
+with safe_open("../exp_genvectors/work/vectors/Qwen_Qwen3-8B--assistant--semantic/diff.safetensors",
                framework="np") as h:
     M = h.get_tensor("diff")[LAYER].astype(np.float64)          # [1036, H]
 M /= np.linalg.norm(M, axis=1, keepdims=True)
-pairs = json.load(open("../exp_gendata/data/semantic.ontology.json"))["pairs"]
+pairs = json.load(open("../exp_genvectors/data/semantic.ontology.json"))["pairs"]
 names = [f"{p['concept']} vs {p['antagonist']}" for p in pairs]
 classes = [p["class_name"] for p in pairs]
 

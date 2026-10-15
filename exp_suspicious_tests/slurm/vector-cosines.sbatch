@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from safetensors import safe_open
 
-VECTORS = "../exp_gendata/work/vectors"
+VECTORS = "../exp_genvectors/work/vectors"
 FAMILIES = {
     "qwen3-8b": ["Qwen_Qwen3-8B-Base--raw", "Qwen_Qwen3-8B-Base--named_raw",
                  "Qwen_Qwen3-8B--user", "Qwen_Qwen3-8B--assistant", "Qwen_Qwen3-8B--named_assistant"],

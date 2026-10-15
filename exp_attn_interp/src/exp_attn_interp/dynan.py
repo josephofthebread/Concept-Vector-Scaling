@@ -16,7 +16,7 @@ log = logging.getLogger("dynan")
 def main() -> None:
     parser = ArgumentParser()
     parser.add_argument("--dyn-dir", type=Path, default=Path("work/dyn"))
-    parser.add_argument("--ontology", type=Path, default=Path("../exp_gendata/data/semantic.ontology.json"))
+    parser.add_argument("--ontology", type=Path, default=Path("../exp_genvectors/data/semantic.ontology.json"))
     parser.add_argument("--detectors", default="", help="'pair:block:head,...' known detector heads to rank")
     parser.add_argument("--out", type=Path, default=Path("work/dynan.json"))
     args = parser.parse_args()

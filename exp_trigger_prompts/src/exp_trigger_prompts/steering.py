@@ -18,7 +18,7 @@ MAX_NEW_TOKENS = 768
 PRESENTATION = "assistant"
 DTYPE = "bfloat16"
 
-VECTORS_ROOT = Path("../exp_gendata/work/vectors")
+VECTORS_ROOT = Path("../exp_genvectors/work/vectors")
 
 
 def attn_impl(model: str) -> str:

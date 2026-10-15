@@ -38,7 +38,7 @@ Jobs call the `[project.scripts]` commands in `.venv/bin/` (`attn-measure`, `att
 
 ## Inputs and outputs
 
-- Inputs: `../exp_gendata/work/vectors/<model>--assistant--semantic/diff.safetensors`, `../exp_gendata/data/semantic.ontology.json`, stories in `../exp_gendata/data/semantic.parquet`.
+- Inputs: `../exp_genvectors/work/vectors/<model>--assistant--semantic/diff.safetensors`, `../exp_genvectors/data/semantic.ontology.json`, stories in `../exp_genvectors/data/semantic.parquet`.
 - Inputs: `../exp_suspicious_tests/data/lmsys_items.parquet` (lmsys items).
 - Outputs: `data/markers_presence.json`, `data/markers_logitlens.json` — marker token sets.
 - Outputs: `work/` (Qwen3-8B) and `work-<model>/` (other models) — one subfolder or JSON per module, e.g. `work/measure/`, `work/decomp/`, `work/posteer/`, `work/pojudge/`.

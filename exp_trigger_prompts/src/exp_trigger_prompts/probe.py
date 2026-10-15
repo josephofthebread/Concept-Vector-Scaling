@@ -13,7 +13,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 log = logging.getLogger("probe")
 
-VEC_ROOT = Path("../exp_gendata/work/vectors")
+VEC_ROOT = Path("../exp_genvectors/work/vectors")
 VEC_TAG = {
     "Qwen/Qwen3-8B": "Qwen_Qwen3-8B--assistant--semantic",
     "google/gemma-2-9b-it": "google_gemma-2-9b-it--assistant--semantic",

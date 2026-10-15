@@ -4,7 +4,7 @@ from pathlib import Path
 
 MODEL = "Qwen/Qwen3-8B"
 
-VEC_ROOT = Path("../exp_gendata/work/vectors")
+VEC_ROOT = Path("../exp_genvectors/work/vectors")
 VEC_TAG = {
     "Qwen/Qwen3-8B": "Qwen_Qwen3-8B--assistant--semantic",
     "Qwen/Qwen3-8B-Base": "Qwen_Qwen3-8B-Base--raw--semantic",

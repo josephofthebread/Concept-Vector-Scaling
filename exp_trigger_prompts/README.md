@@ -33,6 +33,6 @@ SHARDS=N sbatch slurm/merge-gemma.sbatch          # merge a model's sweep shards
 
 ## Inputs and outputs
 
-- Inputs: concept pairs in `data/features.json` (with `data/ontology.json`), concept vectors in `../exp_gendata/work/vectors/`, plus `data/inject_concepts.json`, `data/steer_demo.json` and other files in `data/`.
+- Inputs: concept pairs in `data/features.json` (with `data/ontology.json`), concept vectors in `../exp_genvectors/work/vectors/`, plus `data/inject_concepts.json`, `data/steer_demo.json` and other files in `data/`.
 - Outputs: `work/prompts.jsonl` (drafted prompts) and `work/baselines-<model>.jsonl` (baseline replies).
 - Outputs: `work/steer/` (norms and sweep replies per model), `work/judge/` (judge scores), and one `work/<analysis>/` folder per follow-up, e.g. `work/mlgen-<model>/`, `work/PROBING_2/`, `work/STEER_DEMO/`, `work/scope-data/`.

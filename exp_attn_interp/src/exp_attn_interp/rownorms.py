@@ -11,7 +11,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from exp_attn_interp.common import story_span
-from exp_attn_interp.config import GENDATA_ROOT
+from exp_attn_interp.config import GENVECTORS_ROOT
 from exp_attn_interp.decomp import POOL_MIN, POOL_SKIP
 from exp_attn_interp.xdecomp import render
 
@@ -42,7 +42,7 @@ def main() -> None:
     model.model.norm.register_forward_pre_hook(lambda _m, inputs: final.__setitem__("x", inputs[0].detach()))
     B = len(model.model.layers)
     tbl = pq.read_table(
-        GENDATA_ROOT / "data" / "semantic.parquet",
+        GENVECTORS_ROOT / "data" / "semantic.parquet",
         columns=["pair_id", "concept_text", "antagonist_text"],
         filters=[("language_id", "==", 0)],
     )

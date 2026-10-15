@@ -13,7 +13,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 
 from exp_attn_interp.common import load_model, story_span  # noqa: E402
-from exp_attn_interp.config import GENDATA_ROOT, INSTRUCT_MODEL, vector_tag_for  # noqa: E402
+from exp_attn_interp.config import GENVECTORS_ROOT, INSTRUCT_MODEL, vector_tag_for  # noqa: E402
 from exp_attn_interp.decomp import POOL_MIN, POOL_SKIP  # noqa: E402
 from exp_attn_interp.mlpgain import PreMlpCatcher, dsilu, silu  # noqa: E402
 from exp_attn_interp.vectors import load_diff_vectors  # noqa: E402
@@ -44,7 +44,7 @@ def main() -> None:
     hid = model.config.hidden_size
     dev = model.device
     tbl = pq.read_table(
-        GENDATA_ROOT / "data" / "semantic.parquet",
+        GENVECTORS_ROOT / "data" / "semantic.parquet",
         columns=["pair_id", "concept_text", "antagonist_text"],
         filters=[("language_id", "==", 0)],
     )

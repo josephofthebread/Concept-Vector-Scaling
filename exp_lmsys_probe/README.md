@@ -36,6 +36,6 @@ python scripts/build_suppl.py --model qwen    # build the supplementary HTML int
 
 ## Inputs and outputs
 
-- Inputs: concept vectors in `../exp_gendata/work/vectors/`, concept pairs in `data/features.json`, corpora and models from the Hugging Face cache.
+- Inputs: concept vectors in `../exp_genvectors/work/vectors/`, concept pairs in `data/features.json`, corpora and models from the Hugging Face cache.
 - Outputs: `work/` (with `work_owt/` and `work_alpaca/` for the other corpora) holds readout shards (`cand-*.safetensors`, `ids-*.json`), `candidates.json`, `judged.json`, highlight and span-judge files, `outcome.json` and figures.
 - Outputs: `work/PROBING_LMSYS_1/` holds the heatmap SVGs; `suppl/` holds `concept_pairs_*.html`.

@@ -30,7 +30,7 @@ one two three like just get got go went really much many said says say get also 
 
 def main() -> None:
     parser = ArgumentParser()
-    parser.add_argument("--parquet", type=Path, default=Path("../exp_gendata/data/semantic.parquet"))
+    parser.add_argument("--parquet", type=Path, default=Path("../exp_genvectors/data/semantic.parquet"))
     parser.add_argument("--topn", type=int, default=MARKER_TOPN)
     parser.add_argument("--min-df", type=int, default=2)
     parser.add_argument(

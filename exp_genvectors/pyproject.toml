@@ -1,0 +1,31 @@
+[project]
+name = "exp-genvectors"
+version = "0.2.0"
+description = "Concept vectors across models, presentation formats and depth"
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.0",
+    "datasets>=5.0",
+    "matplotlib>=3.9",
+    "huggingface-hub>=0.30",
+    "numpy>=2.0",
+    "pyarrow>=17.0",
+    "safetensors>=0.4.5",
+    "scipy>=1.13",
+    "torch>=2.4",
+    "transformers>=4.55",
+]
+
+[project.scripts]
+genvectors-prepare = "exp_genvectors.prepare:main"
+genvectors-extract = "exp_genvectors.extract:main"
+genvectors-vectors = "exp_genvectors.vectors:main"
+genvectors-cache-models = "exp_genvectors.cache_models:main"
+genvectors-convergence = "exp_genvectors.convergence:main"
+genvectors-perstory = "exp_genvectors.perstory:main"
+genvectors-langscores = "exp_genvectors.langscores:main"
+genvectors-submit = "exp_genvectors.submit:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

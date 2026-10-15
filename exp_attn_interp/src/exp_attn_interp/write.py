@@ -185,10 +185,10 @@ def main() -> None:
 
     items: list[dict[str, Any]] = []
     if args.stories:
-        from exp_attn_interp.config import GENDATA_ROOT
+        from exp_attn_interp.config import GENVECTORS_ROOT
 
         tbl = pq.read_table(
-            GENDATA_ROOT / "data" / "semantic.parquet",
+            GENVECTORS_ROOT / "data" / "semantic.parquet",
             columns=["pair_id", "concept_text", "antagonist_text"],
             filters=[("language_id", "==", 0)],
         )

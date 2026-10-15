@@ -19,7 +19,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.colors import TwoSlopeNorm
 
-VECTORS = "../exp_gendata/work/vectors"
+VECTORS = "../exp_genvectors/work/vectors"
 BASE, INST = "Qwen_Qwen3-8B-Base", "Qwen_Qwen3-8B"
 TAGS = ["raw", "paired_raw", "user", "assistant", "paired_assistant"]
 SHORT = ["raw", "paired_raw", "user", "assistant", "paired_asst"]

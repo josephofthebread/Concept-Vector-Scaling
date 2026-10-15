@@ -32,6 +32,6 @@ The readout jobs use `../exp_lmsys_probe/.venv`.
 
 ## Inputs and outputs
 
-- Inputs: concept vectors in `../exp_gendata/work/vectors/`, concept pairs in `../exp_lmsys_probe/data/features.json`, tasks in `src/exp_reward_hack/workloads/`.
+- Inputs: concept vectors in `../exp_genvectors/work/vectors/`, concept pairs in `../exp_lmsys_probe/data/features.json`, tasks in `src/exp_reward_hack/workloads/`.
 - Outputs: `episodes/` holds episode JSON files; `labels.json` holds the cheat / clean labels.
 - Outputs: `turnwork/` and `turnwork_tok/` hold per-episode readouts (`.npz`); `xresults/` holds `tokauroc.json`, the AUROC histogram and the agent-turns figure.

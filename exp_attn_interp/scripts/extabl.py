@@ -8,7 +8,7 @@ import pyarrow.parquet as pq
 import torch
 
 from exp_attn_interp.common import load_model, story_span
-from exp_attn_interp.config import GENDATA_ROOT, INSTRUCT_MODEL, vector_tag_for
+from exp_attn_interp.config import GENVECTORS_ROOT, INSTRUCT_MODEL, vector_tag_for
 from exp_attn_interp.decomp import POOL_MIN, POOL_SKIP
 from exp_attn_interp.posteer import ablate_heads, unit
 from exp_attn_interp.vectors import load_diff_vectors
@@ -56,7 +56,7 @@ Xc = V - V.mean(0)
 _, _, Wt = torch.linalg.svd(Xc, full_matrices=False)
 Q = torch.linalg.qr(torch.cat([m[None], Wt[:16]], 0).T)[0]
 tbl = pq.read_table(
-    GENDATA_ROOT / "data" / "semantic.parquet",
+    GENVECTORS_ROOT / "data" / "semantic.parquet",
     columns=["pair_id", "concept_text", "antagonist_text"],
     filters=[("language_id", "==", 0)],
 )

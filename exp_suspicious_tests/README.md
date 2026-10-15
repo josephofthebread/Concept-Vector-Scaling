@@ -1,6 +1,6 @@
 # exp_suspicious_tests
 
-This experiment tests whether the `exp_gendata` concept vectors connect to the model's own computation, not only to text about the concepts.
+This experiment tests whether the `exp_genvectors` concept vectors connect to the model's own computation, not only to text about the concepts.
 It scores every one of the 1036 concept vectors and ranks target concepts against that battery in three assays: MCQA uncertainty (Qwen3-8B instruct and base, gemma-2-9b-it, Llama-3.1-8B), a trashtalk severity sweep (same instruct models), and a head-by-vector attention map on lmsys transcripts (Qwen3-8B).
 It also produces the vector-geometry figures (cosine distributions, participation ratio, basis modes).
 
@@ -37,7 +37,7 @@ Jobs call the `[project.scripts]` commands in `.venv/bin/`: `suspicious-generate
 
 ## Inputs and outputs
 
-- Inputs: `../exp_gendata/work/vectors/` (diff and whitened_diff per model and presentation), `../exp_gendata/data/semantic.ontology.json`.
+- Inputs: `../exp_genvectors/work/vectors/` (diff and whitened_diff per model and presentation), `../exp_genvectors/data/semantic.ontology.json`.
 - Inputs: `data/trashtalk_messages.json`, `data/mcqa_extra.json`, `data/lmsys_labels.parquet`.
 - Outputs: `data/mcqa.parquet`, `data/lmsys_items.parquet`, `data/prefills-deepseek.json`.
 - Outputs: `work/exp2/` — per-model MCQA entropies and projections.

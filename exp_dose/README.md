@@ -27,5 +27,5 @@ Logs go to `logs/`.
 
 ## Inputs and outputs
 
-- Inputs: `../exp_gendata/work/vectors/`, `../exp_lmsys_probe/data/features.json`.
+- Inputs: `../exp_genvectors/work/vectors/`, `../exp_lmsys_probe/data/features.json`.
 - Outputs: `results/dose_<tag>.npz` (readouts), `results/ranking_<tag>.json` (concept ranking), `results/dose_cross.png`, `results/dose_common.png`, `results/dose-response.pdf` and `.png`.

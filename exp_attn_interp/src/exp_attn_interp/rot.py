@@ -14,7 +14,7 @@ from safetensors.torch import save_file
 
 from exp_attn_interp.amp import AMPS, np_ranks
 from exp_attn_interp.common import ValueCatcher, load_model, story_span
-from exp_attn_interp.config import GENDATA_ROOT, INSTRUCT_MODEL, vector_tag_for
+from exp_attn_interp.config import GENVECTORS_ROOT, INSTRUCT_MODEL, vector_tag_for
 from exp_attn_interp.decomp import POOL_MIN, POOL_SKIP, MlpCatcher, read_layers_for, story_ids
 from exp_attn_interp.vectors import load_diff_vectors
 
@@ -236,7 +236,7 @@ def main() -> None:
     rl = read_layers_for(len(model.model.layers))
     mid, last = rl[len(rl) // 2], rl[-1]
     tbl = pq.read_table(
-        GENDATA_ROOT / "data" / "semantic.parquet",
+        GENVECTORS_ROOT / "data" / "semantic.parquet",
         columns=["pair_id", "concept_text", "antagonist_text"],
         filters=[("language_id", "==", 0)],
     )

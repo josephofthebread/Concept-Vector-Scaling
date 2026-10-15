@@ -18,7 +18,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-VECTORS = "../exp_gendata/work/vectors"
+VECTORS = "../exp_genvectors/work/vectors"
 TAGS = ["raw", "paired_raw", "user", "assistant", "paired_assistant"]
 LABEL = {"raw": "raw", "paired_raw": "paired", "user": "user",
          "assistant": "assistant", "paired_assistant": "paired-assistant"}

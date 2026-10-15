@@ -11,7 +11,7 @@ class Checkpoint:
 
 
 REMOTE_ROOT = Path(".")
-GENDATA_VECTORS = Path("../exp_gendata/work/vectors")
+GENVECTORS_VECTORS = Path("../exp_genvectors/work/vectors")
 
 
 INSTRUCT_MODEL = "Qwen/Qwen3-8B"

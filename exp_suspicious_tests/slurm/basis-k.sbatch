@@ -14,7 +14,7 @@ import numpy as np
 from safetensors import safe_open
 
 LAYER = 25
-with safe_open("../exp_gendata/work/vectors/Qwen_Qwen3-8B--assistant--semantic/diff.safetensors",
+with safe_open("../exp_genvectors/work/vectors/Qwen_Qwen3-8B--assistant--semantic/diff.safetensors",
                framework="np") as h:
     M = h.get_tensor("diff")[LAYER].astype(np.float64)          # [1036, H]
 M /= np.linalg.norm(M, axis=1, keepdims=True)

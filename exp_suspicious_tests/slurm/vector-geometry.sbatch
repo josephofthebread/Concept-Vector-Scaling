@@ -15,7 +15,7 @@ srun .venv/bin/python - <<'EOF'
 import numpy as np
 from safetensors import safe_open
 
-VEC = "../exp_gendata/work/vectors/Qwen_Qwen3-8B--assistant--semantic"
+VEC = "../exp_genvectors/work/vectors/Qwen_Qwen3-8B--assistant--semantic"
 for construction in ("diff", "whitened_diff"):
     with safe_open(f"{VEC}/{construction}.safetensors", framework="np") as handle:
         tensor = handle.get_tensor(construction)  # [layers, pairs, hidden]

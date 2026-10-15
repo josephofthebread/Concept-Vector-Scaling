@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from safetensors import safe_open
 
-pairs = json.loads(Path("../exp_gendata/data/semantic.ontology.json").read_text())["pairs"]
+pairs = json.loads(Path("../exp_genvectors/data/semantic.ontology.json").read_text())["pairs"]
 pairs.sort(key=lambda pair: int(pair["pair_id"]))
 SNR_MIN = 10.0
 

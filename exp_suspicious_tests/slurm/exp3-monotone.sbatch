@@ -19,7 +19,7 @@ from pathlib import Path
 import numpy as np
 from safetensors import safe_open
 
-pairs = json.loads(Path("../exp_gendata/data/semantic.ontology.json").read_text())["pairs"]
+pairs = json.loads(Path("../exp_genvectors/data/semantic.ontology.json").read_text())["pairs"]
 pairs.sort(key=lambda pair: int(pair["pair_id"]))
 MODELS = {"Qwen_Qwen3-8B": "qwen", "google_gemma-2-9b-it": "gemma",
           "unsloth_Meta-Llama-3.1-8B-Instruct": "llama"}

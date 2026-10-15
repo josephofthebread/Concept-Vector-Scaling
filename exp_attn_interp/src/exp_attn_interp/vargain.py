@@ -12,7 +12,7 @@ import torch
 from safetensors import safe_open
 
 from exp_attn_interp.common import load_model, story_span
-from exp_attn_interp.config import GENDATA_ROOT, INSTRUCT_MODEL, MARKERS_PRESENCE, vector_tag_for
+from exp_attn_interp.config import GENVECTORS_ROOT, INSTRUCT_MODEL, MARKERS_PRESENCE, vector_tag_for
 from exp_attn_interp.decomp import POOL_MIN, POOL_SKIP
 from exp_attn_interp.slowgain import PreMlpCatcher, mlp_response, unit
 from exp_attn_interp.vectors import load_diff_vectors
@@ -45,7 +45,7 @@ def main() -> None:
     U = model.lm_head.weight.to(torch.float32) * model.model.norm.weight.to(torch.float32)[None, :]
     markers = json.loads(MARKERS_PRESENCE.read_text())
     tbl = pq.read_table(
-        GENDATA_ROOT / "data" / "semantic.parquet",
+        GENVECTORS_ROOT / "data" / "semantic.parquet",
         columns=["pair_id", "concept_text", "antagonist_text"],
         filters=[("language_id", "==", 0)],
     )

@@ -9,7 +9,7 @@ import pyarrow.parquet as pq
 import torch
 
 from exp_attn_interp.common import load_model, story_span
-from exp_attn_interp.config import GENDATA_ROOT, INSTRUCT_MODEL, vector_tag_for
+from exp_attn_interp.config import GENVECTORS_ROOT, INSTRUCT_MODEL, vector_tag_for
 from exp_attn_interp.decomp import POOL_MIN, POOL_SKIP
 from exp_attn_interp.vectors import load_diff_vectors
 from exp_attn_interp.write import story_ids
@@ -46,7 +46,7 @@ def main() -> None:
             "residual": (X - st) / (X - st).norm(dim=-1, keepdim=True).clamp_min(1e-8),
         }
     tbl = pq.read_table(
-        GENDATA_ROOT / "data" / "semantic.parquet",
+        GENVECTORS_ROOT / "data" / "semantic.parquet",
         columns=["pair_id", "concept_text", "antagonist_text"],
         filters=[("language_id", "==", 0)],
     )

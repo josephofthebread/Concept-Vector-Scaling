@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import TwoSlopeNorm, Normalize
 from matplotlib import gridspec
 
-VECTORS = "../exp_gendata/work/vectors"
+VECTORS = "../exp_genvectors/work/vectors"
 TAGS = ["raw", "paired_raw", "user", "assistant", "paired_assistant"]
 SHORT = ["raw", "paired", "user", "asst", "paired-asst"]
 BASE_TAGS = {"raw", "paired_raw"}

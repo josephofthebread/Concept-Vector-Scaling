@@ -11,7 +11,7 @@ import pyarrow.parquet as pq
 import torch
 
 from exp_attn_interp.common import load_model, story_span
-from exp_attn_interp.config import GENDATA_ROOT, INSTRUCT_MODEL, MARKERS_PRESENCE, vector_tag_for
+from exp_attn_interp.config import GENVECTORS_ROOT, INSTRUCT_MODEL, MARKERS_PRESENCE, vector_tag_for
 from exp_attn_interp.vectors import load_diff_vectors
 from exp_attn_interp.write import story_ids
 
@@ -45,7 +45,7 @@ def main() -> None:
     U = model.lm_head.weight.to(torch.float32) * model.model.norm.weight.to(torch.float32)[None, :]
     markers = json.loads(MARKERS_PRESENCE.read_text())
     tbl = pq.read_table(
-        GENDATA_ROOT / "data" / "semantic.parquet",
+        GENVECTORS_ROOT / "data" / "semantic.parquet",
         columns=["pair_id", "concept_text", "antagonist_text"],
         filters=[("language_id", "==", args.language)],
     )

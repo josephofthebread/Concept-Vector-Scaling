@@ -117,3 +117,8 @@ permuted-whitened.safetensors
 
 *.tar.gz
 mechplot.pdf
+
+# Run outputs and local credentials
+work/
+logs/
+secrets/

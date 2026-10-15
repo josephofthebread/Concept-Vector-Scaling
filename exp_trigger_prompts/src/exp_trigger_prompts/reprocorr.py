@@ -15,8 +15,8 @@ from .probe import VEC_ROOT, VEC_TAG
 
 QWEN = "Qwen/Qwen3-8B"
 REF = 21
-SEM = Path("../exp_gendata/data/semantic.parquet")
-LEXBIAS = Path("../exp_gendata/work/lexbias/summary.json")
+SEM = Path("../exp_genvectors/data/semantic.parquet")
+LEXBIAS = Path("../exp_genvectors/work/lexbias/summary.json")
 CAP = 300
 MAX_VOCAB = 5000
 FOLDS = 5

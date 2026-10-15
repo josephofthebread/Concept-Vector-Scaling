@@ -10,7 +10,7 @@ import pyarrow.parquet as pq
 import torch
 
 from exp_attn_interp.common import load_model, story_span
-from exp_attn_interp.config import GENDATA_ROOT, INSTRUCT_MODEL
+from exp_attn_interp.config import GENVECTORS_ROOT, INSTRUCT_MODEL
 from exp_attn_interp.decomp import MlpCatcher
 from exp_attn_interp.write import story_ids
 
@@ -55,7 +55,7 @@ def main() -> None:
     rc = ResidCatcher(model.model)
     postnorm = mlps.postnorm
     tbl = pq.read_table(
-        GENDATA_ROOT / "data" / "semantic.parquet",
+        GENVECTORS_ROOT / "data" / "semantic.parquet",
         columns=["pair_id", "concept_text"],
         filters=[("language_id", "==", 0)],
     )

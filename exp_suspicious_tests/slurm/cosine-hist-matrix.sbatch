@@ -19,7 +19,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-VECTORS = "../exp_gendata/work/vectors"
+VECTORS = "../exp_genvectors/work/vectors"
 # ordered: 3 base tags, then 5 instruct tags
 # named_{raw,assistant,assistant_decl} dropped: naming-drift bias makes them uninformative here.
 TAGS = ["raw", "paired_raw", "user", "assistant", "paired_assistant"]

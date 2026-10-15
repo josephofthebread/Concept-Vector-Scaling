@@ -18,7 +18,7 @@ from pathlib import Path
 import numpy as np
 from safetensors import safe_open
 
-pairs = json.loads(open('../exp_gendata/data/semantic.ontology.json').read())['pairs']
+pairs = json.loads(open('../exp_genvectors/data/semantic.ontology.json').read())['pairs']
 pairs.sort(key=lambda p: int(p['pair_id']))
 
 files = sorted(Path('work/exp4/rho').glob('item-*.safetensors'))

@@ -16,7 +16,7 @@ log = logging.getLogger("decompan")
 def main() -> None:
     parser = ArgumentParser()
     parser.add_argument("--decomp-dir", type=Path, default=Path("work/decomp"))
-    parser.add_argument("--ontology", type=Path, default=Path("../exp_gendata/data/semantic.ontology.json"))
+    parser.add_argument("--ontology", type=Path, default=Path("../exp_genvectors/data/semantic.ontology.json"))
     parser.add_argument("--edgemap", type=Path, default=Path("work/edgemap.json"))
     parser.add_argument("--band-start", type=int, default=19, help="first block of the steering-optimum band")
     parser.add_argument("--out", type=Path, default=Path("work/decompan.json"))

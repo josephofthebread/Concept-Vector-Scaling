@@ -31,11 +31,12 @@ Each `exp_*` folder is self-contained and has the same layout:
 
 Submit jobs from the experiment folder (`sbatch slurm/<job>.sbatch`). Each script resolves its paths relative to that folder and writes logs to `logs/`.
 
-`exp_gendata` comes first: it writes the concept vectors to `exp_gendata/work/vectors/`, and the other experiments read them from `../exp_gendata/work/vectors`.
+`exp_gendataset` generates the Feature Stories corpus. `exp_genvectors` turns it into concept vectors in `exp_genvectors/work/vectors/`, and the other experiments read them from `../exp_genvectors/work/vectors`.
 
 | Experiment | What it does | Paper |
 | - | - | - |
-| [`exp_gendata`](exp_gendata) | Concept vectors for 6 checkpoints × presentation formats; convergence, held-out transfer, separability, shared modes, lexical content | Sec. 2, App. methodology details, ablations |
+| [`exp_gendataset`](exp_gendataset) | Feature Stories corpus: 1,036 concept / antagonist pairs × 10 genres × 5 languages, generated through OpenRouter | Sec. 2, App. dataset |
+| [`exp_genvectors`](exp_genvectors) | Concept vectors for 6 checkpoints × presentation formats; convergence, held-out transfer, separability, shared modes, lexical content | Sec. 2, App. methodology details, ablations |
 | [`exp_lmsys_probe`](exp_lmsys_probe) | Per-conversation concept readout over LMSYS / OpenWebText / Alpaca; span judging; probing examples viewer ([`examples.html`](exp_lmsys_probe/examples.html)) | Sec. 3.1, App. probing details |
 | [`exp_trigger_prompts`](exp_trigger_prompts) | Trigger prompts, baselines, steering sweeps and judging | Sec. 3.2, App. steering details |
 | [`exp_attn_interp`](exp_attn_interp) | Where to probe and steer: layer profile, MLP gain, output-word readout | Ablations: where to probe and steer |

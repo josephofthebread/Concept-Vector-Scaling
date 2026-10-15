@@ -7,7 +7,7 @@ import torch
 from safetensors.torch import load_file, save_file
 
 torch.set_num_threads(8)
-G = Path("../exp_gendata")
+G = Path("../exp_genvectors")
 A = Path(".")
 K, H, L = 1036, 4096, 22
 out = {f"g{g}": torch.zeros(K, H) for g in range(10)}

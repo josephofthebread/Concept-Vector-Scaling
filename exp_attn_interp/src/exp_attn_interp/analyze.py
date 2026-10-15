@@ -23,7 +23,7 @@ def participation_ratio(values: np.ndarray) -> float:
 def main() -> None:
     parser = ArgumentParser()
     parser.add_argument("--measure-dir", type=Path, default=Path("work/measure"))
-    parser.add_argument("--ontology", type=Path, default=Path("../exp_gendata/data/semantic.ontology.json"))
+    parser.add_argument("--ontology", type=Path, default=Path("../exp_genvectors/data/semantic.ontology.json"))
     parser.add_argument("--out", type=Path, default=Path("work/analyze.json"))
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")

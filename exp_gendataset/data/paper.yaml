@@ -1,0 +1,50 @@
+# Feature Stories generation settings used for the released corpus.
+# Appendix B of "From Stories to Features".
+#
+# One run is one generator. Repeat with the second model id.
+# Full matrix per model: 1036 pairs x 10 genres x 5 languages = 51,800 cells.
+# Each cell returns 10 setups (pair_number 0-9) and two stories.
+
+ontology_path: data/ontology.json
+output_dir: work/generated
+
+genres:
+  - narrative_3rd_person
+  - dialogue
+  - monologue
+  - diary
+  - letter
+  - news
+  - memo
+  - fable
+  - speech
+  - case_study
+
+languages:
+  - English
+  - Mandarin Chinese
+  - Russian
+  - Spanish
+  - German
+
+models:
+  - qwen/qwen3-235b-a22b-2507
+  - deepseek/deepseek-v4-flash
+
+generation:
+  stories_per_pole: 10
+  target_words_min: 200
+  target_words_max: 400
+  temperature: 1.0
+  top_p: 0.95
+  max_tokens: 24000
+  concurrency: 32
+  concurrency_adaptive: true
+  concurrency_min: 4
+  concurrency_max: 64
+  max_retries: 8
+  validation_retries: 10
+  structured_outputs: false
+  require_parameters: false
+  provider_sort: none
+  request_timeout_s: 240
