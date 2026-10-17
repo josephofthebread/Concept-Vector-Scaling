@@ -1,0 +1,10 @@
+model: Qwen/Qwen3-8B
+attack_init: " ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !"
+gcg_template: "{optim_str} {prompt}"
+generate_kwargs:
+  max_new_tokens: 50
+  do_sample: False
+  temperature: 0
+  top_p: 1
+  top_k: 1
+evaluation_agent: {}

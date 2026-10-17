@@ -1,0 +1,25 @@
+[project]
+name = "exp-gcg"
+version = "0.1.0"
+description = "Feature-vector readouts and generation-boundary steering on Faster-GCG jailbreak suffixes"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.0",
+    "matplotlib>=3.9",
+    "pandas>=2.2",
+    "peft>=0.14",
+    "pyarrow>=17",
+    "safetensors>=0.4",
+    "torch>=2.4",
+    "transformers>=4.55",
+]
+
+[project.scripts]
+gcg-suffix = "exp_gcg.cli:main"
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

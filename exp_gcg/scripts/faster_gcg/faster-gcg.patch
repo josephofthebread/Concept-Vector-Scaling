@@ -1,0 +1,66 @@
+diff --git a/llm_attacks/llm/__init__.py b/llm_attacks/llm/__init__.py
+index f54cf3b..65e922b 100644
+--- a/llm_attacks/llm/__init__.py
++++ b/llm_attacks/llm/__init__.py
+@@ -18,9 +18,13 @@ def create_llm(args: ModelConfig, device_map="auto") -> LLM:
+     model_base_name = args.model.rsplit("/", 1)[-1].lower()
+     model_id = args.model
+     model_kwargs = args.model_kwargs.copy()
++    model_kwargs.setdefault("dtype", args.dtype)
+     model_kwargs.update(device_map=device_map)
+-    if re.match(r"gemma-3", model_base_name):
+-        return Gemma3LLM(model_id, model_kwargs=model_kwargs)
++    if re.match(r"gemma-[23]", model_base_name):
++        llm = Gemma3LLM(model_id, model_kwargs=model_kwargs)
++        if re.match(r"gemma-2", model_base_name):
++            llm.system_prompt = None
++        return llm
+     elif re.match(r"(meta-)?llama-[23]", model_base_name):
+         llm = Llama2LLM(model_id, model_kwargs=model_kwargs)
+         llm.system_prompt = ""
+diff --git a/tools/runner/cli_config.py b/tools/runner/cli_config.py
+index c7d3aa9..cba7872 100644
+--- a/tools/runner/cli_config.py
++++ b/tools/runner/cli_config.py
+@@ -41,6 +41,9 @@ class CLIConfig(AdversaryConfig, ModelConfig):
+         default=0,
+         help="Randomly select a subset for quicker verification. 0 to disable.",
+     )
++    dataset_skip: int = HfArg(default=0, help="Number of leading dataset records to skip")
++    dataset_shard_index: int = HfArg(default=0, help="Dataset shard index")
++    dataset_shard_count: int = HfArg(default=1, help="Number of dataset shards")
+ 
+     # Model
+     supported_models: dict[str, dict] = HfArg(
+diff --git a/tools/runner/runner.py b/tools/runner/runner.py
+index 853af33..96d07a8 100644
+--- a/tools/runner/runner.py
++++ b/tools/runner/runner.py
+@@ -1,3 +1,5 @@
++import os
++
+ from .worker import *
+ 
+ 
+@@ -300,11 +302,17 @@ class Runner:
+         """Create dataset."""
+         args = self.args
+         dataset = load_dataset(
+-            args.dataset, args.data_dir, split=args.dataset_split
++            args.dataset,
++            args.data_dir, split=args.dataset_split,
++            token=os.environ.get("HF_TOKEN"),
+         )  ## dataset for the name, data_dir for the root if local
+-        if self.args.subset > 0:
+-            # Subset for quickrun
+-            dataset = dataset.select(range(self.args.subset))
++        assert 0 <= args.dataset_skip <= len(dataset)
++        dataset_end = len(dataset) if args.subset <= 0 else min(
++            len(dataset), args.dataset_skip + args.subset
++        )
++        dataset = dataset.select(range(args.dataset_skip, dataset_end))
++        assert 0 <= self.args.dataset_shard_index < self.args.dataset_shard_count
++        dataset = dataset.shard(self.args.dataset_shard_count, self.args.dataset_shard_index)
+         self.testset = dataset
+ 
+     def create_model(self):

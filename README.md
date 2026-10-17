@@ -43,6 +43,7 @@ Submit jobs from the experiment folder (`sbatch slurm/<job>.sbatch`). Each scrip
 | [`exp_suspicious_tests`](exp_suspicious_tests) | Whether vectors connect to the model's own computation; participation-ratio depth figure | Ablations |
 | [`exp_dose`](exp_dose) | Tylenol dose–response check | App. dose–response |
 | [`exp_reward_hack`](exp_reward_hack) | Agents on impossible coding tasks | Sec. 4.1, App. agentic workloads |
+| [`exp_gcg`](exp_gcg) | Feature shifts and generation-boundary steering on Faster-GCG jailbreak suffixes | Sec. 4.2, App. GCG jailbreaks |
 | [`exp_reasoning`](exp_reasoning) | Concept readouts along Qwen3-8B chain-of-thought on GPQA Diamond and MATH-500 | Sec. 4.3, App. chain-of-thought reasoning |
 | [`exp_agentic`](exp_agentic) | Original agentic harness and per-turn readout | Sec. 4.1 |
 
