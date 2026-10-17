@@ -38,4 +38,5 @@ Jobs use the `[project.scripts]` commands in `.venv/bin/` (`genvectors-prepare`,
 
 - Inputs: the `AntonKorznikov/feature_stories` dataset and ontology, Hugging Face checkpoints, `data/mask_concepts.json`.
 - Outputs: `data/semantic.parquet` and `data/syntax.parquet` with their `.ontology.json`; `jobs/*.tsv` task grids; `work/captures/<model>--<format>--<dataset>/shard-NNN.safetensors`; `work/vectors/<tag>/` (vector definitions at every layer); `work/convergence/`, `work/perstory/`, `work/langscores/`.
+- The released vectors (the five paper formats for the three model families) are on Hugging Face as [`josephofthebread/Concept-Vectors`](https://huggingface.co/josephofthebread/Concept-Vectors); `data/model_card.md` is its model card.
 - Logs go to `logs/`.

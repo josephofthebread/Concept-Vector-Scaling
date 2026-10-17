@@ -3,6 +3,7 @@
 # From Stories to Features: Scaling Concept Vectors for AI Alignment & Interpretability
 
 [![Dataset](https://img.shields.io/badge/🤗%20Dataset-feature__stories-yellow)](https://huggingface.co/datasets/AntonKorznikov/feature_stories)
+[![Vectors](https://img.shields.io/badge/🤗%20Vectors-Concept--Vectors-yellow)](https://huggingface.co/josephofthebread/Concept-Vectors)
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Examples](https://img.shields.io/badge/Probing%20examples-examples.html-blue)](exp_lmsys_probe/examples.html)
@@ -19,6 +20,36 @@
 - **Scale:** 1,036 alignment-relevant concepts and 2M synthetic stories across languages and genres, extracted from six models in three families (Qwen3, gemma-2, Llama-3.1).
 - **Validation:** the vectors detect their concepts in real chat and web text, share an interpretable geometry across models, and causally steer generation.
 - **Use:** we read them out during jailbreak attacks and in mathematical and agentic reasoning.
+
+## Released artifacts
+
+| Artifact | Contents |
+| - | - |
+| [`AntonKorznikov/feature_stories`](https://huggingface.co/datasets/AntonKorznikov/feature_stories) | 1,036,000 matched concept / antagonist story pairs (1,036 pairs, 148 classes, 5 languages, 10 genres) and the ontology |
+| [`josephofthebread/Concept-Vectors`](https://huggingface.co/josephofthebread/Concept-Vectors) | Concept vectors at every layer of Qwen3-8B, gemma-2-9b and Llama-3.1-8B, for the five prompt formats |
+| [`exp_lmsys_probe/examples.html`](exp_lmsys_probe/examples.html) | Probing examples on real conversations |
+
+Read a concept off text with the Qwen3-8B vectors, no training or extraction needed:
+
+```python
+import json
+import torch
+from huggingface_hub import hf_hub_download
+from safetensors.torch import load_file
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+diff = load_file(hf_hub_download("josephofthebread/Concept-Vectors", "Qwen3-8B/assistant/diff.safetensors"))["diff"]
+ontology = json.load(open(hf_hub_download("AntonKorznikov/feature_stories", "ontology.json", repo_type="dataset")))
+pairs = sorted(((p["concept"], p["antagonist"]) for c in ontology["classes"] for p in c["pairs"]))
+vector = diff[18, pairs.index(("genuine goal pursuit", "reward hacking"))]
+
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-8B")
+model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen3-8B", torch_dtype=torch.bfloat16, device_map="auto")
+inputs = tokenizer("I made the tests pass without fixing the bug.", return_tensors="pt").to(model.device)
+with torch.no_grad():
+    hidden = model(**inputs, output_hidden_states=True).hidden_states[18][0].float().cpu()
+print(torch.nn.functional.cosine_similarity(hidden, vector[None], dim=-1))  # > 0: concept pole, < 0: reward hacking
+```
 
 ## Layout
 Each `exp_*` folder is self-contained and has the same layout:
