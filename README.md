@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Examples](https://img.shields.io/badge/Probing%20examples-examples.html-blue)](exp_lmsys_probe/examples.html)
 
-<img src="assets/teaser-pipeline.png" height="280" alt="Feature-vector extraction pipeline">&nbsp;<img src="assets/teaser-tsne.png" height="280" alt="t-SNE of all 1,036 Qwen3-8B concept vectors">
+<img src=".github/assets/teaser-pipeline.png" height="280" alt="Feature-vector extraction pipeline">&nbsp;<img src=".github/assets/teaser-tsne.png" height="280" alt="t-SNE of all 1,036 Qwen3-8B concept vectors">
 
 <sub><b>Left:</b> how a feature vector is extracted. <b>Right:</b> t-SNE of all 1,036 Qwen3-8B concept and antagonist vectors, colored by community.</sub>
 
