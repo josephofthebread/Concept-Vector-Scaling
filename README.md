@@ -2,6 +2,7 @@
 
 # From Stories to Features: Scaling Concept Vectors for AI Alignment & Interpretability
 
+[![arXiv](https://img.shields.io/badge/arXiv-2610.24556-b31b1b.svg)](https://arxiv.org/abs/2610.24556)
 [![Dataset](https://img.shields.io/badge/🤗%20Dataset-feature__stories-yellow)](https://huggingface.co/datasets/AntonKorznikov/feature_stories)
 [![Vectors](https://img.shields.io/badge/🤗%20Vectors-Concept--Vectors-yellow)](https://huggingface.co/josephofthebread/Concept-Vectors)
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
@@ -83,9 +84,13 @@ Paper-figure scripts live in each experiment's `scripts/paperfigs/`.
 ## Citation
 ```bibtex
 @misc{scherbakov2026stories,
-    title  = {From Stories to Features: Scaling Concept Vectors for AI Alignment \& Interpretability},
-    author = {Scherbakov, Dmitry and Chernikov, Oleg and Khamash, Victoria and Afendulev, Kirill and
-              Dontsov, Alexey and Oseledets, Ivan and Tutubalina, Elena and Korznikov, Anton},
-    year   = {2026},
+    title         = {From Stories to Features: Scaling Concept Vectors for AI Alignment \& Interpretability},
+    author        = {Scherbakov, Dmitry and Chernikov, Oleg and Khamash, Victoria and Afendulev, Kirill and
+                     Dontsov, Alexey and Oseledets, Ivan and Tutubalina, Elena and Korznikov, Anton},
+    year          = {2026},
+    eprint        = {2610.24556},
+    archivePrefix = {arXiv},
+    primaryClass  = {cs.CL},
+    url           = {https://arxiv.org/abs/2610.24556},
 }
 ```
